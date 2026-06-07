@@ -45,14 +45,15 @@ Rescan starting.
 
 ### 2a. Spawn sbd-verifier subagents
 
-For each re-verify candidate, spawn **3 independent `sbd-verifier` Tasks
-in a single parallel message**. Each verifier receives:
+For each re-verify candidate, spawn **3 independent Tasks in a single
+parallel message**, each with `subagent_type: sbd-verifier`. The agent body
+loads automatically from the named subagent_type — do not instruct the
+subagent to read its own agent file. Each verifier receives:
 
 ```
 You are adversarially verifying ONE security finding to determine whether
-it still exists in the CURRENT code. Read agents/sbd-verifier.md for your
-full instructions. Your default assumption is that this finding is a FALSE
-POSITIVE (or has been fixed). Try to disprove it.
+it still exists in the CURRENT code. Your default assumption is that this
+finding is a FALSE POSITIVE (or has been fixed). Try to disprove it.
 
 PROJECT_ROOT: {absolute path}
 TRUST_BOUNDARY: {from ledger metadata or THREAT_MODEL.md §3, or "untrusted HTTP input → application process"}
@@ -141,16 +142,17 @@ Determine focus areas from `OUTPUT_DIR/THREAT_MODEL.md` (§3 entry points
 and §4 threats) or `OUTPUT_DIR/stack.md`. Default to all standard focus
 areas if neither is present.
 
-For each focus area that intersects with the changed files, spawn one
-**`sbd-discovery` Task** (same as in `vuln-scan`). Limit to 10 discovery
-Tasks per rescan run.
+For each focus area that intersects with the changed files, spawn one Task
+with `subagent_type: sbd-discovery` (same as in `vuln-scan`). The agent body
+loads automatically from the named subagent_type — do not instruct the
+subagent to read its own agent file. Limit to 10 discovery Tasks per rescan
+run.
 
-Provide each `sbd-discovery` subagent with the **scoped file list** in its
-prompt:
+Provide each subagent with the **scoped file list** in its prompt:
 
 ```
 You are conducting authorized static security review of a DIFF-SCOPED subset
-of source files. Read agents/sbd-discovery.md for your full instructions.
+of source files.
 
 FOCUS_AREA:   {focus_area}
 PROJECT_ROOT: {absolute path}
