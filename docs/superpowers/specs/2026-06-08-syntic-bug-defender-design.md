@@ -80,7 +80,7 @@ Adapt the XCHATS `ARCHITECTURE.html`/`MARKETING_PLAN.html` CSS into `assets/repo
 - No active-exploitation tooling ships in v1.
 
 ## 9. Generic / stack-agnostic (required for public)
-- **Zero company specifics** — no GX Bank/iwando data, no hardcoded emails, no Supabase-only defaults. `init` auto-detects stack from manifests/extensions and tailors focus areas (web/TS, Python, Go, Rust, Java, etc.). Supabase/web3 patterns are *one* detectable profile among many, not the default.
+- **Zero company specifics** — no company-specific data, no hardcoded owner emails, no stack-specific defaults. `init` auto-detects stack from manifests/extensions and tailors focus areas (web/TS, Python, Go, Rust, Java, etc.). Supabase/web3 patterns are *one* detectable profile among many, not the default.
 
 ## 10. Advanced capabilities (beyond the reference harness)
 **In v1:** auto stack-detect; diff-aware re-scan (scan since git ref); persistent findings ledger + dedupe + trend; adversarial multi-vote verification as standard; dedicated secret-scan; SARIF output; dual HTML+MD reporting.
@@ -100,7 +100,7 @@ Inspired by the Karpathy-style guidelines (`multica-ai/andrej-karpathy-skills`, 
 - `report.html` matches the Syntic house style with severity-colored cards + metric counts, and includes a **self-contained sticky left sidebar** (scroll-spy + severity filter + jump-to finding index) that works offline from `file://` with no external files and is hidden in print/PDF.
 - `rescan` re-verifies prior fixes (marks fixed) and only surfaces net-new since the last run.
 - `secret-scan` flags a planted test secret. Runs on at least two different stacks (e.g. a TS repo and a Python repo) without code changes.
-- Repo ships LICENSE + NOTICE + README with correct Apache-2.0 attribution; contains no GX Bank data.
+- Repo ships LICENSE + NOTICE + README with correct Apache-2.0 attribution; contains no company-specific data, no hardcoded owner emails, no stack-specific defaults.
 
 ## 12. Risks / open questions
 - Passkey-style Beta/plugin API drift — pin to documented plugin manifest fields; validate with `claude plugin validate`.

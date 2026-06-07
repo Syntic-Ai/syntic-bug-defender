@@ -73,8 +73,10 @@ Tell the user the focus areas and approximate file count before proceeding.
 
 ## Step 3 — Fan out discovery subagents
 
-Spawn **one `sbd-discovery` Task per focus area in parallel** (single message
-with all Task calls). Cap at 10 concurrent. Pass each subagent:
+Spawn **one Task per focus area in parallel** (single message with all Task
+calls), each with `subagent_type: sbd-discovery`. The agent body loads
+automatically from the named subagent_type — do not instruct the subagent to
+read its own agent file. Cap at 10 concurrent. Pass each subagent:
 
 ```
 FOCUS_AREA: {focus_area_name}
@@ -82,8 +84,6 @@ FOCUS_IDX: {01-10}
 PROJECT_ROOT: {absolute path to project root}
 TRUST_BOUNDARY: {from THREAT_MODEL.md §3, or "untrusted HTTP input → application process" if absent}
 STACK: {one-line summary from stack.md, or "unknown"}
-
-Read agents/sbd-discovery.md for your full instructions.
 Your focus area is: {focus_area_name}
 {if THREAT_MODEL.md describes threats relevant to this area, quote the relevant rows here}
 ```
@@ -176,13 +176,14 @@ Write the full ledger JSON. Schema:
     {
       "id": "SBD-001",
       "title": "",
+      "description": "",
       "file": "",
       "line": 0,
       "category": "",
       "severity": "critical|high|medium|low|info",
       "confidence": 0.0,
       "status": "open|confirmed|fixed|false_positive",
-      "verdict": { "real": true, "votes": "2/3", "reason": "" },
+      "verdict": { "real": false, "votes": "0/0", "reason": "pending triage" },
       "evidence": "",
       "exploit_scenario": "",
       "recommendation": "",
@@ -195,6 +196,7 @@ Write the full ledger JSON. Schema:
 
 For new findings written by this skill:
 - `status`: `"open"`
+- `description`: populated from the discovery subagent's `<description>` tag in its `<finding>` block
 - `verdict`: `{ "real": false, "votes": "0/0", "reason": "pending triage" }`
 - `evidence`: `""` (filled by triage)
 - `first_seen` and `last_seen`: this run's ISO timestamp

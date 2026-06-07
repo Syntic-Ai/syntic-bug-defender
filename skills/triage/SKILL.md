@@ -32,6 +32,7 @@ The canonical schema for `docs/security-audit.nosync/ledger.json`:
     {
       "id": "SBD-001",
       "title": "string — one-line description of the vulnerability",
+      "description": "",
       "file": "string — path relative to project root",
       "line": 0,
       "category": "string — e.g. sql-injection, xss, command-injection, auth-bypass, hardcoded-secret, weak-crypto, path-traversal, deserialization, memory-corruption, ...",
@@ -146,13 +147,14 @@ the triage candidate list.
 
 ## Step 4 — Spawn verifiers (N=3 per finding)
 
-For each surviving triage candidate, spawn **3 independent `sbd-verifier`
-Tasks in a single parallel message**. Each verifier receives:
+For each surviving triage candidate, spawn **3 independent Tasks in a single
+parallel message**, each with `subagent_type: sbd-verifier`. The agent body
+loads automatically from the named subagent_type — do not instruct the
+subagent to read its own agent file. Each verifier receives:
 
 ```
-You are adversarially verifying ONE security finding. Read agents/sbd-verifier.md
-for your full instructions. Your default assumption is that this finding is a
-FALSE POSITIVE. Try to disprove it by reading the code.
+Your default assumption is that this finding is a FALSE POSITIVE. Try to
+disprove it by reading the code.
 
 PROJECT_ROOT: {absolute path}
 TRUST_BOUNDARY: {from ledger metadata or THREAT_MODEL.md §3, or "untrusted HTTP input → application process"}

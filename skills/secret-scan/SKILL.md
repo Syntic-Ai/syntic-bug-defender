@@ -223,13 +223,14 @@ For each unique hit, create a finding record in the ledger schema:
 {
   "id": "SBD-NNN",
   "title": "{type} in {relative/file/path}",
+  "description": "{type} detected at {relative/file/path}:{line} — VALUE REDACTED, location and secret type only",
   "file": "{relative file path}",
   "line": {line_number | 0 for git-history-only hits},
   "category": "committed-secret",
   "severity": "{critical | high | medium}",
   "confidence": 0.9,
   "status": "open",
-  "verdict": {"real": null, "votes": "0/0", "reason": ""},
+  "verdict": {"real": false, "votes": "0/0", "reason": "pending triage"},
   "evidence": "{type} pattern matched at {file}:{line} (commit {hash if git-history}) — VALUE REDACTED",
   "exploit_scenario": "An attacker with repository read access (current or historical via git clone) can obtain the {type} and use it to authenticate to the associated service.",
   "recommendation": "{type-specific recommendation — see below}",
@@ -237,6 +238,8 @@ For each unique hit, create a finding record in the ledger schema:
   "last_seen": "{ISO timestamp}"
 }
 ```
+
+**`description` field:** Record the file location and secret TYPE only. Never include the secret value, partial value, or any portion of the matched string. Example: `"aws-access-key-id detected at config/deploy.js:42 — VALUE REDACTED"`.
 
 ### Recommendations by type
 
