@@ -2,7 +2,7 @@
 
 # 🛡️ Syntic Bug Defender
 
-**An AI security-audit loop for any codebase — right inside Claude Code.**
+**An AI security-audit loop for any codebase — right inside Syntic Code and Claude Code.**
 
 Threat-model → discover → adversarially verify → triage → fix → re-scan, with a navigable HTML report.
 
@@ -18,8 +18,8 @@ Threat-model → discover → adversarially verify → triage → fix → re-sca
 
 ## What it is
 
-**Syntic Bug Defender** is a [Claude Code](https://code.claude.com) plugin that runs a complete security
-audit on any repository you open. Install it once, then in any project run a single command and get a
+**Syntic Bug Defender** is a [Syntic Code](https://syntic.ai/bug-defender) and
+[Claude Code](https://code.claude.com) plugin that runs a complete security audit on any repository you open. Install it once, then in any project run a single command and get a
 ranked, **verified**, de-duplicated list of security findings — with candidate fixes and a polished,
 shareable report. Run it again later and it only surfaces what's *new*.
 
