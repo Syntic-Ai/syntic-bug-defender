@@ -1,0 +1,11 @@
+{
+  "name": "syntic-ai",
+  "owner": { "name": "Syntic AI", "url": "https://github.com/Syntic-Ai" },
+  "plugins": [
+    {
+      "name": "syntic-bug-defender",
+      "source": "./",
+      "description": "AI security-audit loop for any repo, with a navigable HTML report."
+    }
+  ]
+}
