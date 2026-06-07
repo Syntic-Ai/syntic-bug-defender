@@ -1,5 +1,6 @@
 {
   "name": "syntic-ai",
+  "description": "Syntic AI security plugin marketplace",
   "owner": { "name": "Syntic AI", "url": "https://github.com/Syntic-Ai" },
   "plugins": [
     {
