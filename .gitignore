@@ -3,3 +3,6 @@ docs/security-audit.nosync/
 .DS_Store
 node_modules/
 *.log
+
+# audit output anywhere (incl. fixtures)
+**/security-audit.nosync/
