@@ -1,0 +1,5 @@
+# never commit local audit output or OS cruft
+docs/security-audit.nosync/
+.DS_Store
+node_modules/
+*.log
