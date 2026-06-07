@@ -169,7 +169,7 @@ git add .claude-plugin/plugin.json && git commit -m "feat: add plugin manifest"
 
 **Files:** Create `assets/report.css`
 
-- [ ] **Step 1: Port the XCHATS house style + add severity palette.** Copy the `<style>` block from `~/Desktop/XCHATS/Docs/ARCHITECTURE.html` (lines ~8-63) into `assets/report.css`, then APPEND severity + finding-card + sidebar rules:
+- [ ] **Step 1: Create the house-style stylesheet + severity palette.** Put the editorial house style (cover page, exec-summary box, metric cards, bold black-header tables, highlight boxes, status badges) into `assets/report.css`, then APPEND severity + finding-card + sidebar rules:
 
 ```css
 /* ---- Severity palette (Syntic Bug Defender) ---- */

@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "AI security-audit loop (threat model, vuln scan, adversarial verify, triage, fixes) for any repo, with a navigable HTML report.",
   "author": { "name": "Syntic AI", "url": "https://github.com/Syntic-Ai" },
-  "homepage": "https://github.com/Syntic-Ai/syntic-bug-defender",
+  "homepage": "https://syntic.ai/bug-defender",
   "repository": "https://github.com/Syntic-Ai/syntic-bug-defender",
   "license": "Apache-2.0",
   "keywords": ["security", "audit", "sast", "vulnerability", "code-review"]
