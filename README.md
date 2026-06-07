@@ -10,7 +10,7 @@ Threat-model → discover → adversarially verify → triage → fix → re-sca
 ![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-plugin-7c3aed)
 ![Stack-agnostic](https://img.shields.io/badge/stack-agnostic-1a7a3a)
 
-*by **Syntic AI***
+**[syntic.ai/bug-defender](https://syntic.ai/bug-defender)** · by **Syntic AI**
 
 </div>
 
@@ -23,13 +23,15 @@ audit on any repository you open. Install it once, then in any project run a sin
 ranked, **verified**, de-duplicated list of security findings — with candidate fixes and a polished,
 shareable report. Run it again later and it only surfaces what's *new*.
 
-It's built on the methodology from Anthropic's open-source
-[defending-code-reference-harness](https://github.com/anthropics/defending-code-reference-harness),
-repackaged as a portable plugin, made **stack-agnostic**, and extended with persistent findings tracking,
-diff-aware re-scans, secret scanning, SARIF output, and a navigable HTML report.
+It packages a battle-tested **recon → discover → verify → triage → fix → re-scan** workflow into one
+portable, stack-agnostic plugin — with persistent findings tracking, diff-aware re-scans, secret scanning,
+SARIF output, and a polished, navigable HTML report.
 
 ## Why it's different
 
+- **Finds bugs scanners can't.** It *reasons* about your code like an attacker — surfacing logic flaws,
+  broken authorization / IDOR, and business-logic bugs that pattern- and regex-based SAST tools structurally
+  miss — not just known signatures.
 - **Recall, then precision.** A discovery swarm casts a wide net; then an **adversarial verifier**
   (multi-vote, "assume it's a false positive and try to disprove it") cuts the noise — so you get
   confirmed issues, not a wall of maybes.
@@ -41,6 +43,27 @@ diff-aware re-scans, secret scanning, SARIF output, and a navigable HTML report.
   Active-testing features (roadmap) refuse to run without a completed authorization file.
 - **Non-destructive.** Output goes to `docs/security-audit.nosync/` — git-ignored and iCloud-excluded; your
   existing `docs/` is never touched.
+
+## What it detects
+
+It reasons about your code *and* its data/auth model, so it covers the high-impact vulnerability classes —
+including the logic and access-control bugs that signature-based scanners miss:
+
+- **Injection & RCE** — SQL/NoSQL injection, command injection, XSS (reflected / stored / DOM), SSRF,
+  path traversal, template injection, unsafe deserialization, `eval`/dynamic-code execution.
+- **Broken access control & auth** — missing or incorrect authorization, IDOR, privilege escalation,
+  authentication / MFA / step-up bypass, JWT & session flaws, over-permissive database row-access (RLS) policies.
+- **Secrets & credentials** — hardcoded secrets, committed `.env` and key files, API keys/tokens in code
+  **or git history**, weak credential handling.
+- **Crypto & data exposure** — weak or misused cryptography, predictable randomness, missing TLS/cert
+  validation, PII or secrets leaked in logs and error responses.
+- **Business logic & money flows** — logic flaws, race conditions / TOCTOU, value/amount manipulation,
+  replay, webhook spoofing, missing server-side validation (the deep bugs regex tools can't see).
+- **Configuration & supply chain** — insecure CORS and security headers, dangerous defaults, dependency
+  and secret hygiene.
+
+Every finding is **severity-ranked**, **adversarially verified** to cut false positives, and ships with a
+**candidate fix** plus a **SARIF** export for CI / GitHub code scanning.
 
 ## Install
 
@@ -107,16 +130,12 @@ a completed `AUTHORIZATION.md`. Only run this against systems you own or are exp
 - **CI GitHub Action** — scan changed files on every pull request.
 - **Optional auto-fix-on-branch** and a **findings trend dashboard**.
 
-## Credits & license
+## License
 
-Built on Anthropic's open-source
-[defending-code-reference-harness](https://github.com/anthropics/defending-code-reference-harness)
-(Apache-2.0), modified and extended by **Syntic AI**. Not affiliated with or endorsed by Anthropic.
-
-Licensed under **Apache-2.0** — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+Apache-2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE) for the full license and third-party attributions.
 
 <div align="center">
 
-Made with 🛡️ by **[Syntic AI](https://github.com/Syntic-Ai)**
+Made with 🛡️ by **[Syntic AI](https://syntic.ai)** · [**syntic.ai/bug-defender**](https://syntic.ai/bug-defender)
 
 </div>
