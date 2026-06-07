@@ -3,6 +3,7 @@ Copyright 2026 Syntic AI
 
 This product is derived from and includes portions of:
   defending-code-reference-harness
+  https://github.com/anthropics/defending-code-reference-harness
   Copyright Anthropic, PBC — licensed under Apache License 2.0
 
 Significant modifications by Syntic AI:
