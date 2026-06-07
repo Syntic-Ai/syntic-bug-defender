@@ -1,0 +1,13 @@
+Syntic Bug Defender
+Copyright 2026 Syntic AI
+
+This product is derived from and includes portions of:
+  defending-code-reference-harness
+  Copyright Anthropic, PBC — licensed under Apache License 2.0
+
+Significant modifications by Syntic AI:
+- Repackaged as a Claude Code plugin (skills/agents/manifest).
+- Made stack-agnostic (auto stack detection; removed C/C++/ASAN-only assumptions).
+- Added dual HTML+Markdown reporting with a self-contained navigable report.
+- Added persistent per-project findings ledger, diff-aware rescan, secret-scan, and SARIF output.
+- Added an authorization gate for future active-testing features.
