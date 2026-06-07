@@ -6,3 +6,6 @@ node_modules/
 
 # audit output anywhere (incl. fixtures)
 **/security-audit.nosync/
+
+# internal maintainer/handoff notes — local only
+INTERNAL.md
